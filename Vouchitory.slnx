@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/backend/Vouchitory.Api/Vouchitory.Api.csproj" />
+  <Project Path="src/backend/Vouchitory.ServiceDefaults/Vouchitory.ServiceDefaults.csproj" />
+  <Project Path="src/backend/Vouchitory.Voucher/Vouchitory.Voucher.csproj" />
+  <Project Path="src/Vouchitory.AppHost/Vouchitory.AppHost.csproj" />
+</Solution>
