@@ -3,7 +3,7 @@ using Vouchitory.Voucher.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddBrighter()
-    .AddVoucherOutboundMessages();
+    .AddVoucherOutboundMessages(builder.Configuration);
 
 builder.Services.AddVoucherInboundMessages();
 

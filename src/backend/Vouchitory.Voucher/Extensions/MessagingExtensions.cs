@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Paramore.Brighter;
 using Paramore.Brighter.Extensions.DependencyInjection;
@@ -9,6 +10,7 @@ public static class MessagingExtensions
 {
     public static IBrighterBuilder AddVoucherOutboundMessages(
         this IBrighterBuilder builder,
+        IConfiguration configuration,
         Action<ProducersConfiguration> configure = null,
         ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
     {
