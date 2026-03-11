@@ -8,4 +8,8 @@
         <UserSecretsId>87b1d892-94d4-4d99-8425-cc892df6b8e6</UserSecretsId>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\backend\Vouchitory.Api\Vouchitory.Api.csproj" />
+    </ItemGroup>
+
 </Project>
