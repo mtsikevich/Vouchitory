@@ -7,6 +7,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    </ItemGroup>
+    
+    <ItemGroup>
       <PackageReference Include="Paramore.Brighter" Version="10.3.0" />
       <PackageReference Include="Paramore.Brighter.Extensions.DependencyInjection" Version="10.3.0" />
       <PackageReference Include="Paramore.Brighter.ServiceActivator.Extensions.DependencyInjection" Version="10.3.0" />
