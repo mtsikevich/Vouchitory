@@ -4,6 +4,7 @@ using Vouchitory.Voucher.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
+builder.AddRabbitMQClient("message-queue");
 builder.Services.AddBrighter()
     .AddVoucherOutboundMessages(builder.Configuration);
 

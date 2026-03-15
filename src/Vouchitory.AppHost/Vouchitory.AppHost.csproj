@@ -12,4 +12,8 @@
       <ProjectReference Include="..\backend\Vouchitory.Api\Vouchitory.Api.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="CommunityToolkit.Aspire.Hosting.LavinMQ" Version="13.1.1" />
+    </ItemGroup>
+
 </Project>
