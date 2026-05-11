@@ -11,9 +11,9 @@
     </ItemGroup>
     
     <ItemGroup>
-      <PackageReference Include="Paramore.Brighter" Version="10.3.0" />
-      <PackageReference Include="Paramore.Brighter.Extensions.DependencyInjection" Version="10.3.0" />
-      <PackageReference Include="Paramore.Brighter.ServiceActivator.Extensions.DependencyInjection" Version="10.3.0" />
+      <PackageReference Include="Rebus.RabbitMq" Version="10.1.1" />
+      <PackageReference Include="Rebus.ServiceProvider" Version="10.7.2" />
+      <PackageReference Include="Trellis.Asp" Version="3.0.0-alpha.158" />
     </ItemGroup>
 
 </Project>

@@ -12,10 +12,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Aspire.RabbitMQ.Client" Version="13.1.2" />
+      <PackageReference Include="Aspire.RabbitMQ.Client" Version="13.3.0" />
       <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.5" />
-      <PackageReference Include="Paramore.Brighter.ServiceActivator.Extensions.Hosting" Version="10.3.0" />
       <PackageReference Include="Scalar.AspNetCore" Version="2.13.6" />
+      <PackageReference Include="Trellis.Asp" Version="3.0.0-alpha.158" />
     </ItemGroup>
 
 </Project>

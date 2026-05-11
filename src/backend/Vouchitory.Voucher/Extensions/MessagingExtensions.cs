@@ -1,39 +1,31 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Paramore.Brighter;
-using Paramore.Brighter.Extensions.DependencyInjection;
-using Paramore.Brighter.ServiceActivator.Extensions.DependencyInjection;
+using Rebus.Config;
+using Rebus.Routing.TypeBased;
+using Rebus.Serialization.Json;
+using Vouchitory.Voucher.Command;
 
 namespace Vouchitory.Voucher.Extensions;
 
-public static class MessagingExtensions
+public static class RebusExtensions
 {
-    public static IBrighterBuilder AddVoucherOutboundMessages(
-        this IBrighterBuilder builder,
-        IConfiguration configuration,
-        Action<ProducersConfiguration> configure = null,
-        ServiceLifetime serviceLifetime = ServiceLifetime.Transient)
+    public static void AddVoucherRebusIntegration(this IServiceCollection services, Action<RebusConfigurer> configure)
     {
-        builder.AddProducers(configure, serviceLifetime);
-        return builder;
-    }
-    
-    public static IServiceCollection AddVoucherInboundMessages(
-        this IServiceCollection services,
-        Action<ConsumersOptions>? configure = null)
-    {
-        services.AddConsumers(configure);
-        return services;
-    }
+        services.AddRebus((configure,provider ) =>
+            {
+                var configuration = provider.GetRequiredService<IConfiguration>();
+                var rabbitMqConnectionString = configuration.GetConnectionString("message-queue");
+                return configure
+                    .Transport(t => t.UseRabbitMq(rabbitMqConnectionString, "voucher"))
+                    .Routing( t => t.TypeBased().Map<CreateVoucher>("voucher"))
+                    .Serialization(s => s.UseSystemTextJson());
+            },
+            onCreated: async (bus) =>
+            {
+                await bus.Subscribe<CreateVoucher>();
+            }
+        );
 
-    private static Action<ProducersConfiguration> OutboundMessageConfigurator => (ProducersConfiguration producersConfiguration) =>
-    {
-        
-    };
-    
-    private static Action<ConsumersOptions> InboundMessageConfigurator => (ConsumersOptions consumersOptions) =>
-    {
-        
-    };
+        services.AddRebusHandler<CreateVoucherHandler>();
+    }
 }
-
